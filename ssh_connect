@@ -1,0 +1,11 @@
+import paramiko
+def ssh_connect(host,user,psd):
+  client = paramiko.SSHClient()
+  client.load_system_host_keys()
+  client.set_missing_host_key_policy(paramiko.WarningPolicy)
+  if (client.connect(hostname=host, username=user, password=psd)):
+    print("good")
+  else:
+    print("bas")
+  stdin, stdout, stderr = client.exec_command(dir)
+  print stdout.read()
