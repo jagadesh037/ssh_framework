@@ -1,11 +1,11 @@
 import paramiko
-def ssh_connect(host,user,psd):
+def ssh_connect(host_ip,user_id,pwd,command):
   client = paramiko.SSHClient()
   client.load_system_host_keys()
   client.set_missing_host_key_policy(paramiko.WarningPolicy)
-  if (client.connect(hostname=host, username=user, password=psd)):
-    print("good")
+  if (client.connect(hostname=host_ip, username=user_id, password=pwd)):
+    print("connected")
   else:
-    print("bas")
-  stdin, stdout, stderr = client.exec_command(dir)
+    print("not connected")
+  stdin, stdout, stderr = client.exec_command(command)
   print stdout.read()
